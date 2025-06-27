@@ -1,10 +1,22 @@
-document.getElementById("load").addEventListener("click", () => {
-  const day = document.getElementById("day").value;
-  if (!day) return;
-  fetch(`questions/jour${day}.json`)
-    .then(res => res.json())
-    .then(data => showQuiz(data));
-});
+async function loadQuestions(day) {
+  try {
+    const response = await fetch(`questions/jour${day}.json`);
+    if (!response.ok) {
+      throw new Error(`Fichier non trouvé : questions/jour${day}.json`);
+    }
+    const data = await response.json();
+    displayQuestions(data);
+  } catch (error) {
+    document.getElementById('questions-container').innerHTML = `
+      <div class="error">
+        ❌ Erreur de chargement des questions pour le jour ${day} :<br>
+        <code>${error.message}</code>
+        <p>Assure-toi que le fichier <strong>jour${day}.json</strong> est bien présent dans le dossier <code>questions/</code>.</p>
+      </div>
+    `;
+    console.error(error);
+  }
+}
 
 function showQuiz(questions) {
   const quizArea = document.getElementById("quiz-area");
