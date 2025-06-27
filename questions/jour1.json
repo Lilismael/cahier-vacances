@@ -1,0 +1,20 @@
+[
+  {
+    "question": "Quel est le groupe du verbe « chanter » ?",
+    "choices": [
+      "1er groupe",
+      "2e groupe",
+      "3e groupe"
+    ],
+    "answer": "1er groupe"
+  },
+  {
+    "question": "Complète au passé composé : Nous _______ nos devoirs.",
+    "choices": [
+      "avons fait",
+      "faisons",
+      "ferons"
+    ],
+    "answer": "avons fait"
+  }
+]
