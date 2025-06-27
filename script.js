@@ -6,7 +6,11 @@ async function loadQuestions(day) {
     }
     const data = await response.json();
     displayQuestions(data);
-  } 
+  } catch (error) {
+    console.error(error);
+    alert(error.message);
+  }
+}
   
 function showQuiz(questions) {
   const quizArea = document.getElementById("quiz-area");
